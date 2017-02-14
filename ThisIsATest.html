@@ -1,10 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <script src = "GameLogic.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1525" height="700"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>My name is Gene</title>
-</head>
-<body>
-<p>wow this is quite exquisite.</p>
-</body>
-</html>
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+      };
+      imageObj.src = 'img/base.jpg';
+    </script>
+  </body>
+</html> 
