@@ -1,19 +1,12 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+  <script src="https://rawgit.com/CreateJS/PreloadJS/master/lib/preloadjs-NEXT.combined.js"></script>
+  <script src="https://rawgit.com/CreateJS/EaselJS/master/lib/easeljs-NEXT.combined.js"></script>
+  <script src="https://rawgit.com/CreateJS/TweenJS/master/lib/tweenjs-NEXT.combined.js"></script>
   <script src = "GameLogic.js"></script>
   </head>
-  <body>
+  <body onload="load()">
     <canvas id="myCanvas" width="1525" height="700"></canvas>
-    <script>
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-      var imageObj = new Image();
-
-      imageObj.onload = function() {
-        context.drawImage(imageObj, 0, 0);
-      };
-      imageObj.src = 'img/base.jpg';
-    </script>
   </body>
 </html> 
