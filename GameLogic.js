@@ -75,6 +75,6 @@ function init() {
   function tick(e)
   {
    move();
-   stage.update();
+   stage.update(e);
   }
 
