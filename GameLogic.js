@@ -1,7 +1,7 @@
 var stage;
 var keys = {};
 
-var SPEED = 1.75;
+var SPEED = 2;
 
 const ARROW_KEY_LEFT  = 37;
 const ARROW_KEY_RIGHT = 39;
@@ -12,6 +12,14 @@ var leftKeyDown = false;
 var rightKeyDown = false;
 var upKeyDown = false;
 var downKeyDown = false;
+
+var rightCollision = false;
+var leftCollision = false;
+var bottomCollision = false;
+var topCollision = false;
+
+var canvasWidth;
+var canvasHeight;
 
 var s;     // circle Shape
 const SX0 = 150, SY0 = 150;
@@ -31,7 +39,10 @@ function init() {
   stage = new createjs.Stage('myCanvas');
   stage.addChild(s);
   stage.update();
-  
+  canvasHeight = 650;
+  canvasWidth = 950;
+
+
   createjs.Ticker.addEventListener("tick", tick);
   createjs.Ticker.setFPS(60);
 
@@ -63,14 +74,40 @@ function init() {
   }
  
   
-  function move()
+  function move()//moves shape 'x' SPEED units in the given direction if KeyDown is true
   {
-   if(leftKeyDown) s.x -= SPEED;
-   if(rightKeyDown) s.x += SPEED;
-   if(upKeyDown) s.y -= SPEED;
-   if(downKeyDown) s.y += SPEED;
+      checkBorder();
+      if (leftKeyDown || rightCollision) {
+          rightCollision = false;
+          s.x -= SPEED;
+      }
+
+      if (rightKeyDown || leftCollision) {
+          leftCollision = false;
+          s.x += SPEED;                             
+      }
+
+      if (upKeyDown || bottomCollision) {
+          bottomCollision = false;
+          s.y -= SPEED;
+      }
+
+      if (downKeyDown || topCollision) {
+          topCollision = false;
+          s.y += SPEED;
+      }
   }
-  
+
+  function  checkBorder() {
+      if (s.x <= 0)
+          leftCollision = true;
+      if (s.x >= canvasWidth)
+          rightCollision = true;
+      if (s.y <= 0)
+          topCollision = true;
+      if (s.y >= canvasHeight)
+          bottomCollision = true;
+  }
   
   function tick(e)
   {
