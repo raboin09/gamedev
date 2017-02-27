@@ -92,26 +92,26 @@ function checkBorder() {
 function storyTrigger() {
     if (storyCheck) {
         if (triggeredObject === bountyHunterTrigger) {
-            bountyHunterStory();
+            bountyHunterDialogue();
             stage.update();
         }
         else if (triggeredObject === ambassadorTrigger) {
-            ambassadorStory();
+            ambassadorDialogue();
             stage.update();
         }
 
         else if (triggeredObject === sithTrigger) {
-            sithStory();
+            sithDialogue();
             stage.update();
         }
 
         else if (triggeredObject === bartenderTrigger) {
-            bartenderStory();
+            bartenderDialogue();
             stage.update();
         }
 
         else if (triggeredObject === policeTrigger) {
-            policeStory();
+            policeDialogue();
             stage.update();
         }
     }

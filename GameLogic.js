@@ -35,20 +35,26 @@ var jediX = 150, jediY = 150;
 var bountyHunterContainer;
 var bountyHunter;
 var bountyHunterTrigger;
-var bountyHunterStory = 0;
+var bountyHunterStoryCount = 0;
 
 var ambassadorContainer;
 var ambassador;
 var ambassadorTrigger;
-var ambassadorStory = 0;
+var ambassadorStoryCount = 0;
 
 var bartender;
 var bartenderTrigger;
-var bartenderStory = 0;
+var bartenderStoryCount = 0;
 
 var sith;
 var sithTrigger;
-var sithStory = 0;
+var sithStoryCount = 0;
+
+var police;
+var policeTrigger;
+var policeStoryCount = 0;
+
+var storyArcCount = 0;
 
 var listOfObjects;
 listOfObjects = [];
