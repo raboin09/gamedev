@@ -1,6 +1,8 @@
 var stage;
 var keys = {};
 
+var t;
+
 var SPEED = 2;
 
 const ARROW_KEY_LEFT = 37;
@@ -20,8 +22,8 @@ var topCollision = false;
 
 var storyCheck = false;
 
-var canvasWidth;
-var canvasHeight;
+var canvasWidth = 950;
+var canvasHeight = 650;
 
 var jediGraphic;
 var jedi;
@@ -32,13 +34,13 @@ var bystander1;
 var bystander1Trigger;
 var bystander1X = 200, bystander1Y = 500;
 
+var bystander2Container;
 var bystander2;
 var bystander2Trigger;
 var bystander2X = 400, bystander2Y = 100;
 
 var listOfObjects;
 listOfObjects = [];
-
 var triggeredObject;
 var listOfTriggers;
 listOfTriggers = [];
@@ -48,6 +50,7 @@ function load() {
 }
 
 function init() {
+		
     // STAGE
     stage = new createjs.Stage('myCanvas');
 
@@ -61,8 +64,8 @@ function init() {
     bystander1Container = new createjs.Container();
 
 
-    //Create bystander1Trigger
     var bystander1TriggerGraphic = new createjs.Graphics();
+    //Create bystander1Trigger
     bystander1TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
     bystander1Trigger = new createjs.Shape(bystander1TriggerGraphic);
     bystander1Trigger.x = 400;
@@ -79,6 +82,26 @@ function init() {
     bystander1.y = 400;
     listOfObjects.push(bystander1);
     stage.addChild(bystander1);
+	
+	
+	
+	   // var bystander2TriggerGraphic = new createjs.Graphics();
+    // bystander2TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    // bystander2Trigger = new createjs.Shape(bystander2TriggerGraphic);
+    // bystander2Trigger.x = 400;
+    // bystander2Trigger.y = 400;
+    // bystander2Trigger.visible = false;
+    // listOfTriggers.push(bystander2Trigger);
+    // stage.addChild(bystander2Trigger);
+	
+	// var bystander2TriggerGraphic = new createjs.Graphics();
+    // bystander2TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    // bystander2Trigger = new createjs.Shape(bystander2TriggerGraphic);
+    // bystander2Trigger.x = 400;
+    // bystander2Trigger.y = 400;
+    // bystander2Trigger.visible = false;
+    // listOfTriggers.push(bystander2Trigger);
+    // stage.addChild(bystander2Trigger);
 
     //Create bystander2 object
     var bystander2Graphic = new createjs.Graphics();
@@ -90,9 +113,11 @@ function init() {
     stage.addChild(bystander2);
 
     bystander1Container.addChild(bystander1, bystander1Trigger);
+	//bystander2Container.addChild(bystander2, bystander2Trigger);
+	//bystander2Container.addChild(bystander2, bystander2Trigger);
 
     stage.addChild(bystander1Container);
-
+	//stage.addChild(bystander2Container);
     stage.update();
 
     canvasHeight = 650;
@@ -104,6 +129,7 @@ function init() {
 
     window.onkeyup = keyUpHandler;
     window.onkeydown = keyDownHandler;
+	drawLine();
 }
 
 
@@ -149,9 +175,8 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
     topCollision = false;
     bottomCollision = false;
     storyCheck = false;
-
-    checkBorder();
-
+			checkBorder();
+	
     if (leftKeyDown && !leftCollision) {
         if (jedi.x - SPEED <= 0) {
             leftCollision = true;
@@ -222,25 +247,70 @@ function checkBorder() {
             storyCheck = true;
             triggeredObject = listOfTriggers[i];
         }
-    }
+			
 
     if(storyCheck){
         if(triggeredObject === bystander1Trigger){
-            bystander1.x = jedi.x+26;
-            bystander1.y = jedi.y-26;
-            bystander1Trigger.x = jedi.x + 26;
-            bystander1Trigger.y = jedi.y - 26;
+		storyUno();
+		stage.update();
         }
         else if(triggeredObject === bystander2Trigger){
-            bystander.visible = false;
+            //bystander.visible = false;
+			storyDos();
+			stage.update();
         }
     }
-
+    }
 }
+
+function storyUno()
+{
+	t = new createjs.Text("Hello, I am just a mere bystander.", "15px Helvetica", "#fff");
+		t.textAlign = "center";
+		t.x = canvasWidth/2;
+		t.y = 620;
+		stage.addChild(t);
+}
+
+function storyDos()
+{
+	t = new createjs.Text("press the any key to pause", "15px Helvetica", "#fff");
+		t.textAlign = "center";
+		t.x = canvasWidth/2;
+		t.y = 620;
+		stage.addChild(t);
+}
+
+function drawLine(){
+var s,g;
+var s1, g1;
+  s = new createjs.Shape();
+  g = s.graphics;
+  s1 = new createjs.Shape();
+  g1 = s1.graphics;
+  
+  g.beginFill("#000"); 
+  g.drawRect(0,0, 950, 5);
+  s.width = 6;
+  s.height = 200;
+  s.x = 0;
+  s.y = 400;
+  stage.addChild(s);
+  
+  g1.beginFill("#000"); 
+  g1.drawRect(0,0, 5, 400);
+  s1.width = 6;
+  s1.height = 100;
+  s1.x = 450;
+  s1.y = 400;
+  stage.addChild(s1);
+}
+
 
 function tick(e) {
     if(upKeyDown || downKeyDown || rightKeyDown || leftKeyDown){
         move();
+		    
     }
     stage.update(e);
 }
