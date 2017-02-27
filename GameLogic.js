@@ -2,6 +2,7 @@ var stage;
 var keys = {};
 
 var displayText;
+var displayTextBool = false;
 
 var SPEED = 2;
 
@@ -274,11 +275,16 @@ function removeText() {
 }
 
 function storyUno() {
-    displayText = new createjs.Text("Hello, I am just a mere bystander.", "15px Helvetica", "#fff");
-    displayText.textAlign = "center";
-    displayText.x = canvasWidth / 2;
-    displayText.y = 620;
-    stage.addChild(displayText);
+    if(displayTextBool === false) {
+        displayText = new createjs.Text("Hello, I am just a mere bystander.", "15px Helvetica", "#fff");
+        displayText.textAlign = "center";
+        displayText.x = canvasWidth / 2;
+        displayText.y = 620;
+        stage.addChild(displayText);
+        setInterval(function(){ stage.removeChild(displayText); displayTextBool = false; }, 4000)
+        displayTextBool = true;
+    }
+
 }
 
 function storyDos() {
