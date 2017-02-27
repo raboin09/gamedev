@@ -5,10 +5,9 @@ function bountyHunterStory() {
         displayText.x = canvasWidth / 2;
         displayText.y = 620;
         stage.addChild(displayText);
-        setInterval(function(){ stage.removeChild(displayText); displayTextBool = false; }, 4000)
+        setInterval(function(){ stage.removeChild(displayText); displayTextBool = false; }, 1000)
         displayTextBool = true;
     }
-
 }
 
 function ambassadorStory() {
@@ -21,7 +20,7 @@ function ambassadorStory() {
         setInterval(function () {
             stage.removeChild(displayText);
             displayTextBool = false;
-        }, 4000)
+        }, 1000)
         displayTextBool = true;
     }
 }
@@ -36,7 +35,7 @@ function bartenderStory() {
         setInterval(function () {
             stage.removeChild(displayText);
             displayTextBool = false;
-        }, 4000)
+        }, 1000)
         displayTextBool = true;
     }
 }
@@ -51,7 +50,7 @@ function sithStory() {
         setInterval(function () {
             stage.removeChild(displayText);
             displayTextBool = false;
-        }, 4000)
+        }, 1000)
         displayTextBool = true;
     }
 }
@@ -66,7 +65,7 @@ function policeStory() {
         setInterval(function () {
             stage.removeChild(displayText);
             displayTextBool = false;
-        }, 4000)
+        }, 1000)
         displayTextBool = true;
     }
 }

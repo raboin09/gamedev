@@ -84,34 +84,38 @@ function checkBorder() {
         else if (jedi.y - listOfTriggers[i].y >= 0 && jedi.y - listOfTriggers[i].y <= 30 && Math.abs(jedi.x - listOfTriggers[i].x) < 25) {
             storyCheck = true;
             triggeredObject = listOfTriggers[i];
+        }        //run triggers if true
+
+    }
+}
+
+function storyTrigger() {
+    if (storyCheck) {
+        if (triggeredObject === bountyHunterTrigger) {
+            bountyHunterStory();
+            stage.update();
+        }
+        else if (triggeredObject === ambassadorTrigger) {
+            ambassadorStory();
+            stage.update();
         }
 
-
-        //run triggers if true
-        if (storyCheck) {
-            if (triggeredObject === bountyHunterTrigger) {
-                bountyHunterStory();
-                stage.update();
-            }
-            else if (triggeredObject === ambassadorTrigger) {
-                ambassadorStory();
-                stage.update();
-            }
-
-            else if (triggeredObject === sithTrigger) {
-                sithStory();
-                stage.update();
-            }
-
-            else if (triggeredObject === bartenderTrigger) {
-                bartenderStory();
-                stage.update();
-            }
-
-            else if (triggeredObject === policeTrigger) {
-                policeStory();
-                stage.update();
-            }
+        else if (triggeredObject === sithTrigger) {
+            sithStory();
+            stage.update();
         }
+
+        else if (triggeredObject === bartenderTrigger) {
+            bartenderStory();
+            stage.update();
+        }
+
+        else if (triggeredObject === policeTrigger) {
+            policeStory();
+            stage.update();
+        }
+    }
+    else{
+        stage.removeChild(displayText);
     }
 }

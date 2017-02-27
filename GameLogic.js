@@ -23,6 +23,8 @@ var topCollision = false;
 
 var storyCheck = false;
 
+var dialogueTimer;
+
 var canvasWidth = 950;
 var canvasHeight = 650;
 
@@ -33,12 +35,20 @@ var jediX = 150, jediY = 150;
 var bountyHunterContainer;
 var bountyHunter;
 var bountyHunterTrigger;
-var bountyHunterX = 200, bountyHunterY = 500;
+var bountyHunterStory = 0;
 
 var ambassadorContainer;
 var ambassador;
 var ambassadorTrigger;
-var ambassadorX = 400, ambassadorY = 100;
+var ambassadorStory = 0;
+
+var bartender;
+var bartenderTrigger;
+var bartenderStory = 0;
+
+var sith;
+var sithTrigger;
+var sithStory = 0;
 
 var listOfObjects;
 listOfObjects = [];
@@ -106,6 +116,7 @@ function tick(e) {
     if (upKeyDown || downKeyDown || rightKeyDown || leftKeyDown) {
         move();
     }
+    storyTrigger();
     stage.update(e);
 }
 
