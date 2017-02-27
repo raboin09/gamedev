@@ -30,15 +30,15 @@ var jediGraphic;
 var jedi;
 var jediX = 150, jediY = 150;
 
-var bystander1Container;
-var bystander1;
-var bystander1Trigger;
-var bystander1X = 200, bystander1Y = 500;
+var bountyHunterContainer;
+var bountyHunter;
+var bountyHunterTrigger;
+var bountyHunterX = 200, bountyHunterY = 500;
 
-var bystander2Container;
-var bystander2;
-var bystander2Trigger;
-var bystander2X = 400, bystander2Y = 100;
+var ambassadorContainer;
+var ambassador;
+var ambassadorTrigger;
+var ambassadorX = 400, ambassadorY = 100;
 
 var listOfObjects;
 listOfObjects = [];
@@ -55,71 +55,6 @@ function init() {
     // STAGE
     stage = new createjs.Stage('myCanvas');
 
-    // Create jedi object
-    jediGraphic = new createjs.Graphics();
-    jediGraphic.beginStroke("black").beginFill("red").drawCircle(0, 0, 10);
-    jedi = new createjs.Shape(jediGraphic);
-    jedi.x = jediX;
-    jedi.y = jediY;
-    stage.addChild(jedi);
-    bystander1Container = new createjs.Container();
-
-
-    var bystander1TriggerGraphic = new createjs.Graphics();
-    //Create bystander1Trigger
-    bystander1TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
-    bystander1Trigger = new createjs.Shape(bystander1TriggerGraphic);
-    bystander1Trigger.x = 400;
-    bystander1Trigger.y = 300;
-    bystander1Trigger.visible = false;
-    listOfTriggers.push(bystander1Trigger);
-    stage.addChild(bystander1Trigger);
-
-    //Create bystander1 object
-    var bystander1Graphic = new createjs.Graphics();
-    bystander1Graphic.beginStroke("black").beginFill("blue").drawCircle(0, 0, 10);
-    bystander1 = new createjs.Shape(bystander1Graphic);
-    bystander1.x = 400;
-    bystander1.y = 300;
-    listOfObjects.push(bystander1);
-    stage.addChild(bystander1);
-
-
-    // var bystander2TriggerGraphic = new createjs.Graphics();
-    // bystander2TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
-    // bystander2Trigger = new createjs.Shape(bystander2TriggerGraphic);
-    // bystander2Trigger.x = 400;
-    // bystander2Trigger.y = 400;
-    // bystander2Trigger.visible = false;
-    // listOfTriggers.push(bystander2Trigger);
-    // stage.addChild(bystander2Trigger);
-
-    // var bystander2TriggerGraphic = new createjs.Graphics();
-    // bystander2TriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
-    // bystander2Trigger = new createjs.Shape(bystander2TriggerGraphic);
-    // bystander2Trigger.x = 400;
-    // bystander2Trigger.y = 400;
-    // bystander2Trigger.visible = false;
-    // listOfTriggers.push(bystander2Trigger);
-    // stage.addChild(bystander2Trigger);
-
-    //Create bystander2 object
-    var bystander2Graphic = new createjs.Graphics();
-    bystander2Graphic.beginStroke("black").beginFill("green").drawCircle(0, 0, 10);
-    bystander2 = new createjs.Shape(bystander2Graphic);
-    bystander2.x = 100;
-    bystander2.y = 100;
-    listOfObjects.push(bystander2);
-    stage.addChild(bystander2);
-
-    bystander1Container.addChild(bystander1, bystander1Trigger);
-    //bystander2Container.addChild(bystander2, bystander2Trigger);
-    //bystander2Container.addChild(bystander2, bystander2Trigger);
-
-    stage.addChild(bystander1Container);
-    //stage.addChild(bystander2Container);
-    stage.update();
-
     canvasHeight = 650;
     canvasWidth = 950;
 
@@ -129,7 +64,7 @@ function init() {
 
     window.onkeyup = keyUpHandler;
     window.onkeydown = keyDownHandler;
-    drawLine();
+    drawObjects();
 }
 
 
@@ -167,134 +102,101 @@ function keyUpHandler(e) {
     }
 }
 
+function drawObjects() {
+    // Create jedi object
+    jediGraphic = new createjs.Graphics();
+    jediGraphic.beginStroke("black").beginFill("red").drawCircle(0, 0, 10);
+    jedi = new createjs.Shape(jediGraphic);
+    jedi.x = jediX;
+    jedi.y = jediY;
+    stage.addChild(jedi);
+    bountyHunterContainer = new createjs.Container();
 
-function move()//moves shape 'x' SPEED units in the given direction if KeyDown is true
-{
-    leftCollision = false;
-    rightCollision = false;
-    topCollision = false;
-    bottomCollision = false;
-    storyCheck = false;
-    checkBorder();
+    //Create bountyHunterTrigger and bountyHunter Objects
+    var bountyHunterTriggerGraphic = new createjs.Graphics();
+    bountyHunterTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    bountyHunterTrigger = new createjs.Shape(bountyHunterTriggerGraphic);
+    bountyHunterTrigger.x = 400;
+    bountyHunterTrigger.y = 300;
+    bountyHunterTrigger.visible = false;
+    listOfTriggers.push(bountyHunterTrigger);
+    stage.addChild(bountyHunterTrigger);
+    var bountyHunterGraphic = new createjs.Graphics();
+    bountyHunterGraphic.beginStroke("black").beginFill("blue").drawCircle(0, 0, 10);
+    bountyHunter = new createjs.Shape(bountyHunterGraphic);
+    bountyHunter.x = 400;
+    bountyHunter.y = 300;
+    listOfObjects.push(bountyHunter);
+    stage.addChild(bountyHunter);
 
-    if (leftKeyDown && !leftCollision) {
-        if (jedi.x - SPEED <= 0) {
-            leftCollision = true;
-        }
-        else {
-            jedi.x -= SPEED;
-        }
-    }
+    //Create ambassadorTrigger and ambassador Objects
+    var ambassadorTriggerGraphic = new createjs.Graphics();
+    ambassadorTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    ambassadorTrigger = new createjs.Shape(ambassadorTriggerGraphic);
+    ambassadorTrigger.x = 500;
+    ambassadorTrigger.y = 200;
+    listOfTriggers.push(ambassadorTrigger);
+    ambassadorTrigger.visible = false;
+    stage.addChild(ambassadorTrigger);
+    var ambassadorGraphic = new createjs.Graphics();
+    ambassadorGraphic.beginStroke("black").beginFill("green").drawCircle(0, 0, 10);
+    ambassador = new createjs.Shape(ambassadorGraphic);
+    ambassador.x = 500;
+    ambassador.y = 200;
+    listOfObjects.push(ambassador);
+    stage.addChild(ambassador);
 
-    else if (rightKeyDown && !rightCollision) {
-        if (jedi.x + SPEED >= canvasWidth) {
-            rightCollision = true;
-        }
-        else {
-            jedi.x += SPEED;
-        }
-    }
+    //Create bartenderTrigger and bartender Objects
+    var bartenderTriggerGraphic = new createjs.Graphics();
+    bartenderTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    bartenderTrigger = new createjs.Shape(bartenderTriggerGraphic);
+    bartenderTrigger.x = 50;
+    bartenderTrigger.y = 50;
+    listOfTriggers.push(bartenderTrigger);
+    bartenderTrigger.visible = false;
+    stage.addChild(bartenderTrigger);
+    var bartenderGraphic = new createjs.Graphics();
+    bartenderGraphic.beginStroke("black").beginFill("orange").drawCircle(0, 0, 10);
+    bartender = new createjs.Shape(bartenderGraphic);
+    bartender.x = 50;
+    bartender.y = 50;
+    listOfObjects.push(bartender);
+    stage.addChild(bartender);
 
-    if (upKeyDown && !topCollision) {
-        if (jedi.y - SPEED <= 0) {
-            topCollision = true;
-        }
-        else {
-            jedi.y -= SPEED;
-        }
-    }
+    //Create sithTrigger and sith Objects
+    var sithTriggerGraphic = new createjs.Graphics();
+    sithTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    sithTrigger = new createjs.Shape(sithTriggerGraphic);
+    sithTrigger.x = 600;
+    sithTrigger.y = 75;
+    listOfTriggers.push(sithTrigger);
+    sithTrigger.visible = false;
+    stage.addChild(sithTrigger);
+    var sithGraphic = new createjs.Graphics();
+    sithGraphic.beginStroke("black").beginFill("grey").drawCircle(0, 0, 10);
+    sith = new createjs.Shape(sithGraphic);
+    sith.x = 600;
+    sith.y = 75;
+    listOfObjects.push(sith);
+    stage.addChild(sith);
 
-    if (downKeyDown && !bottomCollision) {
-        if (jedi.y + SPEED >= canvasHeight) {
-            bottomCollision = true;
-        }
-        else {
-            jedi.y += SPEED;
-        }
-    }
-}
+    //Create policeTrigger and police Objects
+    var policeTriggerGraphic = new createjs.Graphics();
+    policeTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    policeTrigger = new createjs.Shape(policeTriggerGraphic);
+    policeTrigger.x = 800;
+    policeTrigger.y = 325;
+    listOfTriggers.push(policeTrigger);
+    policeTrigger.visible = false;
+    stage.addChild(policeTrigger);
+    var policeGraphic = new createjs.Graphics();
+    policeGraphic.beginStroke("black").beginFill("lightblue").drawCircle(0, 0, 10);
+    police = new createjs.Shape(policeGraphic);
+    police.x = 800;
+    police.y = 325;
+    listOfObjects.push(police);
+    stage.addChild(police);
 
-function checkBorder() {
-    //Check all object collisions
-    for (var i = 0; i < listOfObjects.length; i++) {
-        if (jedi.x - listOfObjects[i].x >= 0 && jedi.x - listOfObjects[i].x <= 20 && Math.abs(jedi.y - listOfObjects[i].y) < 15) {
-            leftCollision = true;
-        }
-        else if (jedi.x - listOfObjects[i].x <= 0 && jedi.x - listOfObjects[i].x >= -20 && Math.abs(jedi.y - listOfObjects[i].y) < 15) {
-            rightCollision = true;
-        }
-        else if (jedi.y - listOfObjects[i].y <= 0 && jedi.y - listOfObjects[i].y >= -20 && Math.abs(jedi.x - listOfObjects[i].x) < 15) {
-            bottomCollision = true;
-        }
-        else if (jedi.y - listOfObjects[i].y >= 0 && jedi.y - listOfObjects[i].y <= 20 && Math.abs(jedi.x - listOfObjects[i].x) < 15) {
-            topCollision = true;
-        }
-    }
-
-    if(jedi.y + 12 > 400 && jedi.y + 12 < 415){
-        bottomCollision = true;
-    }
-
-    //check all trigger area collisions
-    for (var i = 0; i < listOfTriggers.length; i++) {
-        if (jedi.x - listOfTriggers[i].x >= 0 && jedi.x - listOfTriggers[i].x <= 30 && Math.abs(jedi.y - listOfTriggers[i].y) < 25) {
-            storyCheck = true;
-            triggeredObject = listOfTriggers[i];
-        }
-        else if (jedi.x - listOfTriggers[i].x <= 0 && jedi.x - listOfTriggers[i].x >= -30 && Math.abs(jedi.y - listOfTriggers[i].y) < 25) {
-            storyCheck = true;
-            triggeredObject = listOfTriggers[i];
-        }
-        else if (jedi.y - listOfTriggers[i].y <= 0 && jedi.y - listOfTriggers[i].y >= -30 && Math.abs(jedi.x - listOfTriggers[i].x) < 25) {
-            storyCheck = true;
-            triggeredObject = listOfTriggers[i];
-        }
-        else if (jedi.y - listOfTriggers[i].y >= 0 && jedi.y - listOfTriggers[i].y <= 30 && Math.abs(jedi.x - listOfTriggers[i].x) < 25) {
-            storyCheck = true;
-            triggeredObject = listOfTriggers[i];
-        }
-
-
-        //run triggers if true
-        if (storyCheck) {
-            if (triggeredObject === bystander1Trigger) {
-                storyUno();
-                stage.update();
-            }
-            else if (triggeredObject === bystander2Trigger) {
-                //bystander.visible = false;
-                storyDos();
-                stage.update();
-            }
-        }
-    }
-}
-
-function removeText() {
-
-}
-
-function storyUno() {
-    if(displayTextBool === false) {
-        displayText = new createjs.Text("Hello, I am just a mere bystander.", "15px Helvetica", "#fff");
-        displayText.textAlign = "center";
-        displayText.x = canvasWidth / 2;
-        displayText.y = 620;
-        stage.addChild(displayText);
-        setInterval(function(){ stage.removeChild(displayText); displayTextBool = false; }, 4000)
-        displayTextBool = true;
-    }
-
-}
-
-function storyDos() {
-    displayText = new createjs.Text("press the any key to pause", "15px Helvetica", "#fff");
-    displayText.textAlign = "center";
-    displayText.x = canvasWidth / 2;
-    displayText.y = 620;
-}
-
-function drawLine() {
     var botHorizontalWall, botHorizontalWallGraphics;
     var botVerticalWall, botVerticalWallGraphics;
     botHorizontalWall = new createjs.Shape();
@@ -317,6 +219,8 @@ function drawLine() {
     botVerticalWall.x = 450;
     botVerticalWall.y = 400;
     stage.addChild(botVerticalWall);
+
+    stage.update();
 }
 
 
