@@ -7,7 +7,7 @@ var displayTextBool = false;
 var backgroundImage = new Image();
 var backgroundBitmap;
 
-var SPEED = 2;
+var SPEED = 4;
 
 const ARROW_KEY_LEFT = 37;
 const ARROW_KEY_RIGHT = 39;
