@@ -8,7 +8,7 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
     checkBorder();
 
     if (leftKeyDown && !leftCollision) {
-        if (jedi.x - SPEED <= 0) {
+        if (jedi.x - SPEED <= 20) {
             leftCollision = true;
         }
         else {
@@ -17,7 +17,7 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
     }
 
     else if (rightKeyDown && !rightCollision) {
-        if (jedi.x + SPEED >= canvasWidth) {
+        if (jedi.x + SPEED >= canvasWidth-20) {
             rightCollision = true;
         }
         else {
@@ -26,7 +26,7 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
     }
 
     if (upKeyDown && !topCollision) {
-        if (jedi.y - SPEED <= 0) {
+        if (jedi.y - SPEED <= 20) {
             topCollision = true;
         }
         else {
@@ -35,7 +35,7 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
     }
 
     if (downKeyDown && !bottomCollision) {
-        if (jedi.y + SPEED >= canvasHeight) {
+        if (jedi.y + SPEED >= canvasHeight - 30) {
             bottomCollision = true;
         }
         else {
