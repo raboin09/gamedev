@@ -91,6 +91,43 @@ function drawObjects() {
     police.y = 325;
     listOfObjects.push(police);
     stage.addChild(police);
+	
+	
+	//Door graphic
+	//TODO: Door Collision and Trigger
+    var door1Graphic = new createjs.Graphics();
+    door1Graphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
+    door1 = new createjs.Shape(door1Graphic);
+    door1.x = 810;
+    door1.y = 390;
+    stage.addChild(door1);
+	
+	//Big room graphic with adjustable alpha
+	var bigRoomGraphic = new createjs.Graphics();
+    bigRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 950, 400);
+    bigRoom = new createjs.Shape(bigRoomGraphic);
+	bigRoom.alpha = 0;
+    bigRoom.x = 0;
+	bigRoom.y = 0;
+    stage.addChild(bigRoom);
+	
+	//Left room graphic with adjustable alpha
+	var leftRoomGraphic = new createjs.Graphics();
+    leftRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 450, 300);
+    leftRoom = new createjs.Shape(leftRoomGraphic);
+	leftRoom.alpha = 0;
+    leftRoom.x = 0;
+    leftRoom.y = 405;
+    stage.addChild(leftRoom);
+	
+	//Right room graphic with adjustable alpha
+	var rightRoomGraphic = new createjs.Graphics();
+    rightRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 500, 300);
+    rightRoom = new createjs.Shape(rightRoomGraphic);
+	rightRoom.alpha = 0;
+    rightRoom.x = 450;
+    rightRoom.y = 400;
+    stage.addChild(rightRoom);
 
     var botHorizontalWall, botHorizontalWallGraphics;
     var botVerticalWall, botVerticalWallGraphics;

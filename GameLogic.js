@@ -46,6 +46,13 @@ var bartender;
 var bartenderTrigger;
 var bartenderStoryCount = 0;
 
+var door1;
+var door1Trigger;
+
+var bigRoom;
+var leftRoom;
+var rightRoom;
+
 var sith;
 var sithTrigger;
 var sithStoryCount = 0;
