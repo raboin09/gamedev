@@ -1,5 +1,5 @@
 function drawObjects() {
-    // Create jedi object
+        // Create jedi object
     jediGraphic = new createjs.Graphics();
     jediGraphic.beginStroke("black").beginFill("red").drawCircle(0, 0, 10);
     jedi = new createjs.Shape(jediGraphic);
@@ -91,18 +91,6 @@ function drawObjects() {
     police.y = 325;
     listOfObjects.push(police);
     stage.addChild(police);
-	
-	
-/*
-	//Door graphic
-	//TODO: Door Collision and Trigger
-    var door1Graphic = new createjs.Graphics();
-    door1Graphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
-    door1 = new createjs.Shape(door1Graphic);
-    door1.x = 810;
-    door1.y = 390;
-    stage.addChild(door1);
-*/
 
     //Door graphic
     //TODO: Door Collision and Trigger
@@ -172,6 +160,7 @@ function drawObjects() {
     botHorizontalWall = new createjs.Shape();
     botHorizontalWallGraphics = botHorizontalWall.graphics;
     botVerticalWall = new createjs.Shape();
+    botVerticalWall.visible = false;
     botVerticalWallGraphics = botVerticalWall.graphics;
 
     botHorizontalWallGraphics.beginFill("#000");
@@ -180,6 +169,7 @@ function drawObjects() {
     botHorizontalWall.height = 200;
     botHorizontalWall.x = 0;
     botHorizontalWall.y = 400;
+    botHorizontalWall.visible = false;
     stage.addChild(botHorizontalWall);
 
     botVerticalWallGraphics.beginFill("#000");

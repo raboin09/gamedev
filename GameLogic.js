@@ -4,6 +4,9 @@ var keys = {};
 var displayText;
 var displayTextBool = false;
 
+var backgroundImage = new Image();
+var backgroundBitmap;
+
 var SPEED = 2;
 
 const ARROW_KEY_LEFT = 37;
@@ -76,20 +79,24 @@ function load() {
 }
 
 function init() {
-
-    // STAGE
     stage = new createjs.Stage('myCanvas');
 
     canvasHeight = 650;
     canvasWidth = 950;
 
+    backgroundImage.src = 'img/base.jpg';
+    backgroundImage.onload = function () {
+        backgroundBitmap = new createjs.Bitmap(backgroundImage);
+        stage.addChild(backgroundBitmap);
+        stage.update();
+        createjs.Ticker.addEventListener("tick", tick);
+        createjs.Ticker.setFPS(60);
 
-    createjs.Ticker.addEventListener("tick", tick);
-    createjs.Ticker.setFPS(60);
+        window.onkeyup = keyUpHandler;
+        window.onkeydown = keyDownHandler;
+        drawObjects();
+    }
 
-    window.onkeyup = keyUpHandler;
-    window.onkeydown = keyDownHandler;
-    drawObjects();
 }
 
 
