@@ -93,6 +93,7 @@ function drawObjects() {
     stage.addChild(police);
 	
 	
+/*
 	//Door graphic
 	//TODO: Door Collision and Trigger
     var door1Graphic = new createjs.Graphics();
@@ -101,6 +102,43 @@ function drawObjects() {
     door1.x = 810;
     door1.y = 390;
     stage.addChild(door1);
+*/
+
+    //Door graphic
+    //TODO: Door Collision and Trigger
+    var bigToRightDoorGraphic = new createjs.Graphics();
+    bigToRightDoorGraphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
+    bigToRightDoorShape = new createjs.Shape(bigToRightDoorGraphic);
+    bigToRightDoorShape.x = 810;
+    bigToRightDoorShape.y = 390;
+    stage.addChild(bigToRightDoorShape);
+
+    //Door graphic
+    //TODO: Door Collision and Trigger
+    var rightToBigDoorGraphic = new createjs.Graphics();
+    rightToBigDoorGraphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
+    rightToBigDoorShape = new createjs.Shape(rightToBigDoorGraphic);
+    rightToBigDoorShape.x = 810;
+    rightToBigDoorShape.y = 404;
+    stage.addChild(rightToBigDoorShape);
+
+    //Door graphic
+    //TODO: Door Collision and Trigger
+    var bigToLeftDoorGraphic = new createjs.Graphics();
+    bigToLeftDoorGraphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
+    bigToLeftDoorShape = new createjs.Shape(bigToLeftDoorGraphic);
+    bigToLeftDoorShape.x = 100;
+    bigToLeftDoorShape.y = 390;
+    stage.addChild(bigToLeftDoorShape);
+
+    //Door graphic
+    //TODO: Door Collision and Trigger
+    var leftToBigDoorGraphic = new createjs.Graphics();
+    leftToBigDoorGraphic.beginStroke("black").beginFill("red").drawRect(0, 0, 55, 10);
+    leftToBigDoorShape = new createjs.Shape(leftToBigDoorGraphic);
+    leftToBigDoorShape.x = 100;
+    leftToBigDoorShape.y = 404;
+    stage.addChild(leftToBigDoorShape);
 	
 	//Big room graphic with adjustable alpha
 	var bigRoomGraphic = new createjs.Graphics();
@@ -115,7 +153,7 @@ function drawObjects() {
 	var leftRoomGraphic = new createjs.Graphics();
     leftRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 450, 300);
     leftRoom = new createjs.Shape(leftRoomGraphic);
-	leftRoom.alpha = 0;
+	leftRoom.alpha = .9;
     leftRoom.x = 0;
     leftRoom.y = 405;
     stage.addChild(leftRoom);
@@ -124,9 +162,9 @@ function drawObjects() {
 	var rightRoomGraphic = new createjs.Graphics();
     rightRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 500, 300);
     rightRoom = new createjs.Shape(rightRoomGraphic);
-	rightRoom.alpha = 0;
+	rightRoom.alpha = .9;
     rightRoom.x = 450;
-    rightRoom.y = 400;
+    rightRoom.y = 405;
     stage.addChild(rightRoom);
 
     var botHorizontalWall, botHorizontalWallGraphics;

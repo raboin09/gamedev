@@ -63,9 +63,40 @@ function checkBorder() {
         }
     }
 
+    //check wall collisions
     if(jedi.y + 12 > 400 && jedi.y + 12 < 415){
         bottomCollision = true;
     }
+
+    if(jedi.y - 12 < 400 && jedi.y - 12 > 385){
+        topCollision = true;
+    }
+
+    if(jedi.x + 12 > 450 && jedi.x + 12 < 465 && jedi.y > 400){
+        rightCollision = true;
+    }
+
+    if(jedi.x - 12 < 456 && jedi.x - 12 > 450 && jedi.y > 400){
+        leftCollision = true;
+    }
+
+    //check door triggers
+    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y + 10 > 395 && jedi.y + 10 < 405){
+        bigToLeftTrigger();
+    }
+
+    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y - 10 < 415 && jedi.y - 10 > 395){
+        leftToBigTrigger();
+    }
+
+    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y + 10 > 395 && jedi.y + 10 < 405){
+        bigToRightTrigger();
+    }
+
+    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y - 10 < 415 && jedi.y - 10 > 395){
+        rightToBigTrigger();
+    }
+
 
     //check all trigger area collisions
     for (var i = 0; i < listOfTriggers.length; i++) {
@@ -118,4 +149,32 @@ function storyTrigger() {
     else{
         stage.removeChild(displayText);
     }
+}
+
+function bigToLeftTrigger(){
+    rightRoom.alpha = .9;
+    leftRoom.alpha = 0;
+    bigRoom.alpha = .9;
+    jedi.y += 40;
+}
+
+function leftToBigTrigger() {
+    rightRoom.alpha = .9;
+    leftRoom.alpha = .9;
+    bigRoom.alpha = 0;
+    jedi.y -= 40;
+}
+
+function bigToRightTrigger() {
+    rightRoom.alpha = 0;
+    leftRoom.alpha = .9;
+    bigRoom.alpha = .9;
+    jedi.y += 40;
+}
+
+function rightToBigTrigger() {
+    rightRoom.alpha = .9;
+    leftRoom.alpha = .9;
+    bigRoom.alpha = 0;
+    jedi.y -= 40;
 }

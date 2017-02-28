@@ -46,8 +46,10 @@ var bartender;
 var bartenderTrigger;
 var bartenderStoryCount = 0;
 
-var door1;
-var door1Trigger;
+var bigToRightDoorShape;
+var rightToBigDoorShape;
+var bigToLeftDoorShape;
+var leftToBigDoorShape;
 
 var bigRoom;
 var leftRoom;
