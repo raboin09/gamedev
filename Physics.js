@@ -120,29 +120,43 @@ function checkBorder() {
     }
 }
 
+function storyArcCheck() {
+    if(bartenderStoryCount === 1 && sithStoryCount === 1 && ambassadorStoryCount === 1 && bountyHunterStoryCount=== 1 && policeStoryCount ===1 && storyArcCount === 0){
+        alert("story level is now 1");
+        storyArcCount++;
+    }
+    if(bartenderStoryCount === 2 && sithStoryCount === 2 && ambassadorStoryCount === 2 && bountyHunterStoryCount=== 2 && policeStoryCount ===2 && storyArcCount === 1) {
+        alert("story level is now 2");
+        storyArcCount++;
+    }
+    if(bartenderStoryCount === 3 && sithStoryCount === 3 && ambassadorStoryCount === 3 && bountyHunterStoryCount=== 3 && policeStoryCount === 3 && storyArcCount === 2)
+        storyArcCount++;
+}
+
 function storyTrigger() {
+    storyArcCheck();
     if (storyCheck) {
         if (triggeredObject === bountyHunterTrigger) {
-            bountyHunterDialogue();
+            bountyHunterStory();
             stage.update();
         }
         else if (triggeredObject === ambassadorTrigger) {
-            ambassadorDialogue();
+            ambassadorStory();
             stage.update();
         }
 
         else if (triggeredObject === sithTrigger) {
-            sithDialogue();
+            sithStory();
             stage.update();
         }
 
         else if (triggeredObject === bartenderTrigger) {
-            bartenderDialogue();
+            bartenderStory();
             stage.update();
         }
 
         else if (triggeredObject === policeTrigger) {
-            policeDialogue();
+            policeStory();
             stage.update();
         }
     }

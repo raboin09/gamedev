@@ -2,6 +2,18 @@ var stage;
 var keys = {};
 
 var displayText;
+var bartenderDisplayText;
+var bountyHunterDisplayText;
+var ambassadorDisplayText;
+var sithDisplayText;
+var policeDisplayText;
+var jediDisplayText;
+var bartenderDisplayTextBool = false;
+var bountyHunterDisplayTextBool = false;
+var ambassadorDisplayTextBool = false;
+var sithDisplayTextBool = false;
+var policeDisplayTextBool = false;
+var jediDisplayTextBool = false;
 var displayTextBool = false;
 
 var backgroundImage = new Image();
