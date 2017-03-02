@@ -15,6 +15,9 @@ var sithDisplayTextBool = false;
 var policeDisplayTextBool = false;
 var jediDisplayTextBool = false;
 var displayTextBool = false;
+var dialogBox;
+var bartenderTalkingHead;
+var bountyHunterTalkingHead;
 
 var backgroundImage = new Image();
 var backgroundBitmap;
@@ -59,6 +62,7 @@ var ambassadorStoryCount = 0;
 
 var bartender;
 var bartenderTrigger;
+var bartenderSprite;
 var bartenderStoryCount = 0;
 
 var bigToRightDoorShape;

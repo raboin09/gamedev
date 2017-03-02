@@ -49,16 +49,16 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
 function checkBorder() {
     //Check all object collisions
     for (var i = 0; i < listOfObjects.length; i++) {
-        if (jedi.x - listOfObjects[i].x >= 0 && jedi.x - listOfObjects[i].x <= 20 && Math.abs(jedi.y - listOfObjects[i].y) < 15) {
+        if (jedi.x - listOfObjects[i].x >= 0 && jedi.x - listOfObjects[i].x <= 25 && Math.abs(jedi.y - listOfObjects[i].y) < 25) {
             leftCollision = true;
         }
-        else if (jedi.x - listOfObjects[i].x <= 0 && jedi.x - listOfObjects[i].x >= -20 && Math.abs(jedi.y - listOfObjects[i].y) < 15) {
+        else if (jedi.x - listOfObjects[i].x <= 0 && jedi.x - listOfObjects[i].x >= -30 && Math.abs(jedi.y - listOfObjects[i].y) < 25) {
             rightCollision = true;
         }
-        else if (jedi.y - listOfObjects[i].y <= 0 && jedi.y - listOfObjects[i].y >= -20 && Math.abs(jedi.x - listOfObjects[i].x) < 15) {
+        else if (jedi.y - listOfObjects[i].y <= 0 && jedi.y - listOfObjects[i].y >= -30 && Math.abs(jedi.x - listOfObjects[i].x) < 25) {
             bottomCollision = true;
         }
-        else if (jedi.y - listOfObjects[i].y >= 0 && jedi.y - listOfObjects[i].y <= 20 && Math.abs(jedi.x - listOfObjects[i].x) < 15) {
+        else if (jedi.y - listOfObjects[i].y >= 0 && jedi.y - listOfObjects[i].y <= 30 && Math.abs(jedi.x - listOfObjects[i].x) < 25) {
             topCollision = true;
         }
     }

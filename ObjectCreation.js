@@ -55,6 +55,7 @@ function drawObjects() {
     bartender = new createjs.Shape(bartenderGraphic);
     bartender.x = 50;
     bartender.y = 50;
+    bartender.visible = false;
     listOfObjects.push(bartender);
     stage.addChild(bartender);
 
@@ -139,7 +140,7 @@ function drawObjects() {
 
 	//Left room graphic with adjustable alpha
 	var leftRoomGraphic = new createjs.Graphics();
-    leftRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 450, 300);
+    leftRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 450, 250);
     leftRoom = new createjs.Shape(leftRoomGraphic);
 	leftRoom.alpha = .9;
     leftRoom.x = 0;
@@ -148,12 +149,41 @@ function drawObjects() {
 
 	//Right room graphic with adjustable alpha
 	var rightRoomGraphic = new createjs.Graphics();
-    rightRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 500, 300);
+    rightRoomGraphic.beginStroke("black").beginFill("black").drawRect(0, 0, 500, 250);
     rightRoom = new createjs.Shape(rightRoomGraphic);
 	rightRoom.alpha = .9;
     rightRoom.x = 450;
     rightRoom.y = 400;
     stage.addChild(rightRoom);
+
+    //dialogueBox creation
+    var dialogueBoxGraphic = new createjs.Graphics();
+    dialogueBoxGraphic.beginStroke("d3d3d3").beginFill("#000").drawRect(0, 0, 950, 100);
+    dialogueBox = new createjs.Shape(dialogueBoxGraphic);
+    dialogueBox.alpha = 1;
+    dialogueBox.x = 0;
+    dialogueBox.y = 650;
+    stage.addChild(dialogueBox);
+
+    //bartender graphics
+    bartenderTalkingHead = new createjs.Bitmap('img/bartenderHead.png');
+    bartenderTalkingHead.x = 5;
+    bartenderTalkingHead.y = 655;
+    bartenderTalkingHead.visible = false;
+    stage.addChild(bartenderTalkingHead);
+
+    bartenderSprite = new createjs.Bitmap('img/bartender.png');
+    bartenderSprite.x = bartender.x - 20;
+    bartenderSprite.y = bartender.y - 30;
+    bartenderSprite.visible = true;
+    stage.addChild(bartenderSprite);
+
+    //bartender talking head
+    bountyHunterTalkingHead = new createjs.Bitmap('img/bountyHunterHead.png');
+    bountyHunterTalkingHead.x = 5;
+    bountyHunterTalkingHead.y = 655;
+    bountyHunterTalkingHead.visible = false;
+    stage.addChild(bountyHunterTalkingHead);
 
     var botHorizontalWall, botHorizontalWallGraphics;
     var botVerticalWall, botVerticalWallGraphics;
@@ -165,17 +195,13 @@ function drawObjects() {
 
     botHorizontalWallGraphics.beginFill("#000");
     botHorizontalWallGraphics.drawRect(0, 0, 950, 5);
-    botHorizontalWall.width = 6;
-    botHorizontalWall.height = 200;
     botHorizontalWall.x = 0;
     botHorizontalWall.y = 400;
     botHorizontalWall.visible = false;
     stage.addChild(botHorizontalWall);
 
     botVerticalWallGraphics.beginFill("#000");
-    botVerticalWallGraphics.drawRect(0, 0, 5, 400);
-    botVerticalWall.width = 6;
-    botVerticalWall.height = 100;
+    botVerticalWallGraphics.drawRect(0, 0, 5, 250);
     botVerticalWall.x = 450;
     botVerticalWall.y = 400;
     stage.addChild(botVerticalWall);
