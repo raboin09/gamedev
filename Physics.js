@@ -122,15 +122,13 @@ function checkBorder() {
 
 function storyArcCheck() {
     if(bartenderStoryCount === 1 && sithStoryCount === 1 && ambassadorStoryCount === 1 && bountyHunterStoryCount=== 1 && policeStoryCount ===1 && storyArcCount === 0){
-        alert("story level is now 1");
-        storyArcCount++;
+        storyArcCount = 1;
     }
     if(bartenderStoryCount === 2 && sithStoryCount === 2 && ambassadorStoryCount === 2 && bountyHunterStoryCount=== 2 && policeStoryCount ===2 && storyArcCount === 1) {
-        alert("story level is now 2");
-        storyArcCount++;
+        storyArcCount = 2;
     }
     if(bartenderStoryCount === 3 && sithStoryCount === 3 && ambassadorStoryCount === 3 && bountyHunterStoryCount=== 3 && policeStoryCount === 3 && storyArcCount === 2)
-        storyArcCount++;
+        storyArcCount = 3;
 }
 
 function storyTrigger() {
@@ -166,6 +164,11 @@ function storyTrigger() {
 }
 
 function bigToLeftTrigger(){
+    ambassadorSprite.visible = false;
+    sithSprite.visible = false;
+    bountyHunterSprite.visible = false;
+    policeSprite.visible = false;
+    bartenderSprite.visible = false;
     rightRoom.alpha = .9;
     leftRoom.alpha = 0;
     bigRoom.alpha = .9;
@@ -173,6 +176,11 @@ function bigToLeftTrigger(){
 }
 
 function leftToBigTrigger() {
+    ambassadorSprite.visible = true;
+    sithSprite.visible = true;
+    bountyHunterSprite.visible = true;
+    policeSprite.visible = true;
+    bartenderSprite.visible = true;
     rightRoom.alpha = .9;
     leftRoom.alpha = .9;
     bigRoom.alpha = 0;
@@ -180,6 +188,11 @@ function leftToBigTrigger() {
 }
 
 function bigToRightTrigger() {
+    ambassadorSprite.visible = false;
+    sithSprite.visible = false;
+    bountyHunterSprite.visible = false;
+    policeSprite.visible = false;
+    bartenderSprite.visible = false;
     rightRoom.alpha = 0;
     leftRoom.alpha = .9;
     bigRoom.alpha = .9;
@@ -187,6 +200,11 @@ function bigToRightTrigger() {
 }
 
 function rightToBigTrigger() {
+    ambassadorSprite.visible = true;
+    sithSprite.visible = true;
+    bountyHunterSprite.visible = true;
+    policeSprite.visible = true;
+    bartenderSprite.visible = true;
     rightRoom.alpha = .9;
     leftRoom.alpha = .9;
     bigRoom.alpha = 0;

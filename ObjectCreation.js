@@ -19,6 +19,7 @@ function drawObjects() {
     var bountyHunterGraphic = new createjs.Graphics();
     bountyHunterGraphic.beginStroke("black").beginFill("blue").drawCircle(0, 0, 10);
     bountyHunter = new createjs.Shape(bountyHunterGraphic);
+    bountyHunter.visible = false;
     bountyHunter.x = 400;
     bountyHunter.y = 300;
     listOfObjects.push(bountyHunter);
@@ -36,6 +37,7 @@ function drawObjects() {
     var ambassadorGraphic = new createjs.Graphics();
     ambassadorGraphic.beginStroke("black").beginFill("green").drawCircle(0, 0, 10);
     ambassador = new createjs.Shape(ambassadorGraphic);
+    ambassador.visible = false;
     ambassador.x = 500;
     ambassador.y = 200;
     listOfObjects.push(ambassador);
@@ -54,7 +56,7 @@ function drawObjects() {
     bartenderGraphic.beginStroke("black").beginFill("orange").drawCircle(0, 0, 10);
     bartender = new createjs.Shape(bartenderGraphic);
     bartender.x = 50;
-    bartender.y = 50;
+    bartender.y = 30;
     bartender.visible = false;
     listOfObjects.push(bartender);
     stage.addChild(bartender);
@@ -71,6 +73,7 @@ function drawObjects() {
     var sithGraphic = new createjs.Graphics();
     sithGraphic.beginStroke("black").beginFill("grey").drawCircle(0, 0, 10);
     sith = new createjs.Shape(sithGraphic);
+    sith.visible = false;
     sith.x = 600;
     sith.y = 75;
     listOfObjects.push(sith);
@@ -80,16 +83,17 @@ function drawObjects() {
     var policeTriggerGraphic = new createjs.Graphics();
     policeTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
     policeTrigger = new createjs.Shape(policeTriggerGraphic);
-    policeTrigger.x = 800;
-    policeTrigger.y = 325;
+    policeTrigger.x = 850;
+    policeTrigger.y = 250;
     listOfTriggers.push(policeTrigger);
     policeTrigger.visible = false;
     stage.addChild(policeTrigger);
     var policeGraphic = new createjs.Graphics();
     policeGraphic.beginStroke("black").beginFill("lightblue").drawCircle(0, 0, 10);
     police = new createjs.Shape(policeGraphic);
-    police.x = 800;
-    police.y = 325;
+    police.x = 850;
+    police.y = 250;
+    police.visible = false;
     listOfObjects.push(police);
     stage.addChild(police);
 
@@ -178,12 +182,54 @@ function drawObjects() {
     bartenderSprite.visible = true;
     stage.addChild(bartenderSprite);
 
+    bountyHunterSprite = new createjs.Bitmap('img/bountyHunter.png');
+    bountyHunterSprite.x = bountyHunter.x - 20;
+    bountyHunterSprite.y = bountyHunter.y - 30;
+    bountyHunterSprite.visible = true;
+    stage.addChild(bountyHunterSprite);
+
     //bartender talking head
     bountyHunterTalkingHead = new createjs.Bitmap('img/bountyHunterHead.png');
     bountyHunterTalkingHead.x = 5;
     bountyHunterTalkingHead.y = 655;
     bountyHunterTalkingHead.visible = false;
     stage.addChild(bountyHunterTalkingHead);
+
+    ambassadorSprite = new createjs.Bitmap('img/ambassador.png');
+    ambassadorSprite.x = ambassador.x - 30;
+    ambassadorSprite.y = ambassador.y - 30;
+    ambassadorSprite.visible = true;
+    stage.addChild(ambassadorSprite);
+
+    ambassadorTalkingHead = new createjs.Bitmap('img/ambassadorHead.png');
+    ambassadorTalkingHead.x = 5;
+    ambassadorTalkingHead.y = 655;
+    ambassadorTalkingHead.visible = false;
+    stage.addChild(ambassadorTalkingHead);
+
+    sithSprite = new createjs.Bitmap('img/sith.png');
+    sithSprite.x = sith.x - 30;
+    sithSprite.y = sith.y - 30;
+    sithSprite.visible = true;
+    stage.addChild(sithSprite);
+
+    sithTalkingHead = new createjs.Bitmap('img/sithHead.png');
+    sithTalkingHead.x = 5;
+    sithTalkingHead.y = 655;
+    sithTalkingHead.visible = false;
+    stage.addChild(sithTalkingHead);
+
+    policeSprite = new createjs.Bitmap('img/police.png');
+    policeSprite.x = police.x - 20;
+    policeSprite.y = police.y - 30;
+    policeSprite.visible = true;
+    stage.addChild(policeSprite);
+
+    policeTalkingHead = new createjs.Bitmap('img/policeHead.png');
+    policeTalkingHead.x = 5;
+    policeTalkingHead.y = 655;
+    policeTalkingHead.visible = false;
+    stage.addChild(policeTalkingHead);
 
     var botHorizontalWall, botHorizontalWallGraphics;
     var botVerticalWall, botVerticalWallGraphics;

@@ -8,6 +8,7 @@ var ambassadorDisplayText;
 var sithDisplayText;
 var policeDisplayText;
 var jediDisplayText;
+
 var bartenderDisplayTextBool = false;
 var bountyHunterDisplayTextBool = false;
 var ambassadorDisplayTextBool = false;
@@ -16,6 +17,10 @@ var policeDisplayTextBool = false;
 var jediDisplayTextBool = false;
 var displayTextBool = false;
 var dialogBox;
+
+var ambassadorTalkingHead;
+var sithTalkingHead;
+var policeTalkingHead;
 var bartenderTalkingHead;
 var bountyHunterTalkingHead;
 
@@ -53,11 +58,13 @@ var jediX = 150, jediY = 150;
 var bountyHunterContainer;
 var bountyHunter;
 var bountyHunterTrigger;
+var bountyHunterSprite;
 var bountyHunterStoryCount = 0;
 
 var ambassadorContainer;
 var ambassador;
 var ambassadorTrigger;
+var ambassadorSprite;
 var ambassadorStoryCount = 0;
 
 var bartender;
@@ -76,10 +83,12 @@ var rightRoom;
 
 var sith;
 var sithTrigger;
+var sithSprite;
 var sithStoryCount = 0;
 
 var police;
 var policeTrigger;
+var sithSprite;
 var policeStoryCount = 0;
 
 var storyArcCount = 0;
