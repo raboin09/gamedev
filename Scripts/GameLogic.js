@@ -1,5 +1,18 @@
 var stage;
-var keys = {};
+
+var spriteAnimationData = {
+    images: ["RubenSpriteTest/jedi.png"],
+    frames: [[1, 1, 23, 42],[24, 1, 47, 41],[48, 1, 71, 42],[72, 1, 93 ,41]],
+    animations: {
+        stand: 0,
+        walkDown: [0,4]
+}
+};
+
+var jediSpriteSheet = new createjs.SpriteSheet(spriteAnimationData);
+var jediWalkAnimation = new createjs.Sprite(jediSpriteSheet, "walkDown");
+var jediStandAnimation = new createjs.Sprite(jediSpriteSheet, "stand");
+
 
 var displayText;
 var bartenderDisplayText;
@@ -16,6 +29,7 @@ var sithDisplayTextBool = false;
 var policeDisplayTextBool = false;
 var jediDisplayTextBool = false;
 var displayTextBool = false;
+
 var dialogBox;
 
 var ambassadorTalkingHead;
