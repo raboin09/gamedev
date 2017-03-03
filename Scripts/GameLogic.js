@@ -1,18 +1,38 @@
 var stage;
 
 var spriteAnimationData = {
-    images: ["RubenSpriteTest/jedi.png"],
-    frames: [[1, 1, 23, 42],[24, 1, 47, 41],[48, 1, 71, 42],[72, 1, 93 ,41]],
+    images: ["img/jedi.png"],
+    frames: [[5, 4, 23, 42],[36, 5, 23, 41],[69, 4, 23, 42],[102, 5, 23 , 41],
+            [6, 52, 21, 42], [38, 53, 20, 41], [70, 52, 21, 42], [102, 53, 22, 41],
+            [5, 100, 21, 42], [38, 101, 20, 41], [69, 100, 21, 42], [100, 101, 22, 41],
+            [4, 148, 25, 42], [38, 149, 24, 41], [68, 148, 25, 42], [99, 149, 24, 41]],
     animations: {
-        stand: 0,
-        walkDown: [0,4]
+        standDown: 0,
+        standLeft: 4,
+        standRight: 8,
+        standUp: 12,
+        walkDown:
+            {
+                frames: [0, 1, 2, 3],
+                speed: .6
+            },
+        walkLeft:
+            {
+                frames: [4, 5, 6, 7],
+                speed: .6
+            },
+        walkRight:
+            {
+                frames: [8, 9, 10, 11],
+                speed: .6
+            },
+        walkUp:
+            {
+                frames: [12, 13, 14, 15],
+                speed: .6
+            }
 }
 };
-
-var jediSpriteSheet = new createjs.SpriteSheet(spriteAnimationData);
-var jediWalkAnimation = new createjs.Sprite(jediSpriteSheet, "walkDown");
-var jediStandAnimation = new createjs.Sprite(jediSpriteSheet, "stand");
-
 
 var displayText;
 var bartenderDisplayText;
@@ -68,6 +88,21 @@ var canvasHeight = 650;
 var jediGraphic;
 var jedi;
 var jediX = 150, jediY = 150;
+
+var jediSpriteSheet = new createjs.SpriteSheet(spriteAnimationData);
+var jediFacingInt;
+
+var jediWalkDown;
+var jediStandDown;
+
+var jediWalkUp;
+var jediStandUp;
+
+var jediWalkLeft;
+var jediStandLeft;
+
+var jediWalkRight;
+var jediStandRight;
 
 var bountyHunterContainer;
 var bountyHunter;
@@ -130,7 +165,6 @@ function init() {
         stage.update();
         createjs.Ticker.addEventListener("tick", tick);
         createjs.Ticker.setFPS(60);
-
         window.onkeyup = keyUpHandler;
         window.onkeydown = keyDownHandler;
         drawObjects();
@@ -173,9 +207,56 @@ function keyUpHandler(e) {
     }
 }
 
+
 function tick(e) {
     if (upKeyDown || downKeyDown || rightKeyDown || leftKeyDown) {
         move();
+    }
+    else if(upKeyDown==false && downKeyDown==false && rightKeyDown==false && leftKeyDown==false){
+        if (jediFacingInt == 0) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = true;
+            jediStandRight.visible = false;
+        }
+        else if (jediFacingInt == 1) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = true;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+        }
+        else if (jediFacingInt == 2) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = true;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+        }
+        else if (jediFacingInt == 3) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = true;
+        }
     }
     storyTrigger();
     stage.update(e);
