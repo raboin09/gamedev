@@ -18,6 +18,46 @@ function drawObjects() {
     jediStandRight = new createjs.Sprite(jediSpriteSheet, "standRight");
     jediStandLeft = new createjs.Sprite(jediSpriteSheet, "standLeft");
 
+    jediStandDown.scaleX = 1.5;
+    jediStandDown.scaleY = 1.5;
+    jediStandDown.x = jedi.x - 18;
+    jediStandDown.y = jedi.y - 30;
+
+    jediStandUp.scaleX = 1.5;
+    jediStandUp.scaleY = 1.5;
+    jediStandUp.x = jedi.x - 18;
+    jediStandUp.y = jedi.y - 30;
+
+    jediStandLeft.scaleX = 1.5;
+    jediStandLeft.scaleY = 1.5;
+    jediStandLeft.x = jedi.x - 18;
+    jediStandLeft.y = jedi.y - 30;
+
+    jediStandRight.scaleX = 1.5;
+    jediStandRight.scaleY = 1.5;
+    jediStandRight.x = jedi.x - 18;
+    jediStandRight.y = jedi.y - 30;
+
+    jediWalkDown.scaleX = 1.5;
+    jediWalkDown.scaleY = 1.5;
+    jediWalkDown.x = jedi.x - 18;
+    jediWalkDown.y = jedi.y - 30;
+
+    jediWalkUp.scaleX = 1.5;
+    jediWalkUp.scaleY = 1.5;
+    jediWalkUp.x = jedi.x - 18;
+    jediWalkUp.y = jedi.y - 30;
+
+    jediWalkLeft.scaleX = 1.5;
+    jediWalkLeft.scaleY = 1.5;
+    jediWalkLeft.x = jedi.x - 18;
+    jediWalkLeft.y = jedi.y - 30;
+
+    jediWalkRight.scaleX = 1.5;
+    jediWalkRight.scaleY = 1.5;
+    jediWalkRight.x = jedi.x - 18;
+    jediWalkRight.y = jedi.y - 30;
+
     jediStandDown.visible = false;
     jediStandLeft.visible = false;
     jediStandRight.visible = false;
@@ -27,6 +67,28 @@ function drawObjects() {
     jediWalkLeft.visible = false;
     jediWalkRight.visible = false;
     jediWalkUp.visible = false;
+
+    stage.addChild(jediStandDown);
+    stage.addChild(jediStandUp);
+    stage.addChild(jediStandLeft);
+    stage.addChild(jediStandRight);
+
+    stage.addChild(jediWalkDown);
+    stage.addChild(jediWalkUp);
+    stage.addChild(jediWalkLeft);
+    stage.addChild(jediWalkRight);
+
+    jediWalkRight.framerate = 12;
+    jediWalkUp.framerate = 12;
+    jediWalkDown.framerate = 12;
+    jediWalkLeft.framerate = 12;
+
+    jediStandRight.framerate = 12;
+    jediStandUp.framerate = 12;
+    jediStandDown.framerate = 12;
+    jediStandLeft.framerate = 12;
+
+    jedi.visible = false;
 
     jediFacingInt = 0;
 

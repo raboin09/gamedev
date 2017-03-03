@@ -12,6 +12,17 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
             leftCollision = true;
         }
         else {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = true;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+
+            jediFacingInt = 1;
             jedi.x -= SPEED;
         }
     }
@@ -21,6 +32,17 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
             rightCollision = true;
         }
         else {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = true;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+
+            jediFacingInt = 3;
             jedi.x += SPEED;
         }
     }
@@ -30,20 +52,63 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
             topCollision = true;
         }
         else {
+            jediWalkUp.visible = true;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+
+            jediFacingInt = 2;
             jedi.y -= SPEED;
         }
     }
 
     else if (downKeyDown && !bottomCollision) {
         if (jedi.y + SPEED >= canvasHeight - 30) {
-            //jediStandAnimation.x = jedi.x - 18;
-            //jediStandAnimation.y = jedi.y - 30;
             bottomCollision = true;
         }
         else {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = true;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+            jediFacingInt = 0;
             jedi.y += SPEED;
         }
     }
+
+    jediStandDown.x = jedi.x - 18;
+    jediStandDown.y = jedi.y - 30;
+
+    jediStandUp.x = jedi.x - 18;
+    jediStandUp.y = jedi.y - 30;
+
+    jediStandLeft.x = jedi.x - 18;
+    jediStandLeft.y = jedi.y - 30;
+
+    jediStandRight.x = jedi.x - 18;
+    jediStandRight.y = jedi.y - 30;
+
+    jediWalkDown.x = jedi.x - 18;
+    jediWalkDown.y = jedi.y - 30;
+
+    jediWalkUp.x = jedi.x - 18;
+    jediWalkUp.y = jedi.y - 30;
+
+    jediWalkLeft.x = jedi.x - 18;
+    jediWalkLeft.y = jedi.y - 30;
+
+    jediWalkRight.x = jedi.x - 18;
+    jediWalkRight.y = jedi.y - 30;
 
 }
 
@@ -53,25 +118,67 @@ function checkBorder() {
     //Check all object collisions
     for (var i = 0; i < listOfObjects.length; i++) {
         if (jedi.x - listOfObjects[i].x >= 0 && jedi.x - listOfObjects[i].x <= 25 && Math.abs(jedi.y - listOfObjects[i].y) < 25) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = true;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+            jediFacingInt = 1;
             leftCollision = true;
         }
         else if (jedi.x - listOfObjects[i].x <= 0 && jedi.x - listOfObjects[i].x >= -30 && Math.abs(jedi.y - listOfObjects[i].y) < 25) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = true;
+
+            jediFacingInt = 3;
             rightCollision = true;
         }
         else if (jedi.y - listOfObjects[i].y <= 0 && jedi.y - listOfObjects[i].y >= -30 && Math.abs(jedi.x - listOfObjects[i].x) < 25) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = false;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = true;
+            jediStandRight.visible = false;
+            jediFacingInt = 0;
             bottomCollision = true;
         }
         else if (jedi.y - listOfObjects[i].y >= 0 && jedi.y - listOfObjects[i].y <= 30 && Math.abs(jedi.x - listOfObjects[i].x) < 25) {
+            jediWalkUp.visible = false;
+            jediWalkLeft.visible = false;
+            jediWalkDown.visible = false;
+            jediWalkRight.visible = false;
+
+            jediStandUp.visible = true;
+            jediStandLeft.visible = false;
+            jediStandDown.visible = false;
+            jediStandRight.visible = false;
+
+            jediFacingInt = 2;
             topCollision = true;
         }
     }
 
     //check wall collisions
-    if(jedi.y + 12 > 400 && jedi.y + 12 < 415){
+    if(jedi.y + 30 > 400 && jedi.y + 30 < 415){
         bottomCollision = true;
     }
 
-    if(jedi.y - 12 < 400 && jedi.y - 12 > 385){
+    if(jedi.y - 30 < 400 && jedi.y - 30 > 385){
         topCollision = true;
     }
 
@@ -84,19 +191,19 @@ function checkBorder() {
     }
 
     //check door triggers
-    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y + 10 > 395 && jedi.y + 10 < 405){
+    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y + 30 > 395 && jedi.y + 10 < 405){
         bigToLeftTrigger();
     }
 
-    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y - 10 < 415 && jedi.y - 10 > 395){
+    if(jedi.x + 12 < 175 && jedi.x + 12 > 110 && jedi.y - 30 < 415 && jedi.y - 10 > 395){
         leftToBigTrigger();
     }
 
-    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y + 10 > 395 && jedi.y + 10 < 405){
+    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y + 30 > 395 && jedi.y + 10 < 405){
         bigToRightTrigger();
     }
 
-    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y - 10 < 415 && jedi.y - 10 > 395){
+    if(jedi.x + 12 < 885 && jedi.x + 12 > 820 && jedi.y - 30 < 415 && jedi.y - 10 > 395){
         rightToBigTrigger();
     }
 
@@ -175,7 +282,7 @@ function bigToLeftTrigger(){
     rightRoom.alpha = .9;
     leftRoom.alpha = 0;
     bigRoom.alpha = .9;
-    jedi.y += 40;
+    jedi.y += 80;
 }
 
 function leftToBigTrigger() {
@@ -187,7 +294,7 @@ function leftToBigTrigger() {
     rightRoom.alpha = .9;
     leftRoom.alpha = .9;
     bigRoom.alpha = 0;
-    jedi.y -= 40;
+    jedi.y -= 80;
 }
 
 function bigToRightTrigger() {
@@ -199,7 +306,7 @@ function bigToRightTrigger() {
     rightRoom.alpha = 0;
     leftRoom.alpha = .9;
     bigRoom.alpha = .9;
-    jedi.y += 40;
+    jedi.y += 80;
 }
 
 function rightToBigTrigger() {
@@ -211,5 +318,5 @@ function rightToBigTrigger() {
     rightRoom.alpha = .9;
     leftRoom.alpha = .9;
     bigRoom.alpha = 0;
-    jedi.y -= 40;
+    jedi.y -= 80;
 }
