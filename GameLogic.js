@@ -1,5 +1,25 @@
 var stage;
-var keys = {};
+
+var spriteAnimationData = {
+    images: ["img/jedi.png"],
+    frames: [[5, 4, 23, 42],[36, 5, 23, 41],[69, 4, 23, 42],[102, 5, 23 , 41],
+            [6, 52, 21, 42], [38, 53, 20, 41], [70, 52, 21, 42], [102, 53, 22, 41]],
+    animations: {
+        standDown: 0,
+        standLeft: 4,
+        walkDown:
+            {
+                frames: [0, 1, 2, 3],
+                speed: .6
+            },
+        walkLeft:
+            {
+                frames: [4, 5, 6, 7],
+                speed: .6
+            }
+
+}
+};
 
 var displayText;
 var bartenderDisplayText;
@@ -16,6 +36,7 @@ var sithDisplayTextBool = false;
 var policeDisplayTextBool = false;
 var jediDisplayTextBool = false;
 var displayTextBool = false;
+
 var dialogBox;
 
 var ambassadorTalkingHead;
@@ -116,7 +137,6 @@ function init() {
         stage.update();
         createjs.Ticker.addEventListener("tick", tick);
         createjs.Ticker.setFPS(60);
-
         window.onkeyup = keyUpHandler;
         window.onkeydown = keyDownHandler;
         drawObjects();
@@ -159,9 +179,13 @@ function keyUpHandler(e) {
     }
 }
 
+
 function tick(e) {
     if (upKeyDown || downKeyDown || rightKeyDown || leftKeyDown) {
         move();
+    }
+    else if(upKeyDown==false && downKeyDown==false && rightKeyDown==false && leftKeyDown==false){
+
     }
     storyTrigger();
     stage.update(e);

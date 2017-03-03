@@ -7,6 +7,7 @@ function drawObjects() {
     jedi.y = jediY;
     stage.addChild(jedi);
 
+
     //Create bountyHunterTrigger and bountyHunter Objects
     var bountyHunterTriggerGraphic = new createjs.Graphics();
     bountyHunterTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);

@@ -25,7 +25,7 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
         }
     }
 
-    if (upKeyDown && !topCollision) {
+    else if (upKeyDown && !topCollision) {
         if (jedi.y - SPEED <= 20) {
             topCollision = true;
         }
@@ -34,14 +34,17 @@ function move()//moves shape 'x' SPEED units in the given direction if KeyDown i
         }
     }
 
-    if (downKeyDown && !bottomCollision) {
+    else if (downKeyDown && !bottomCollision) {
         if (jedi.y + SPEED >= canvasHeight - 30) {
+            //jediStandAnimation.x = jedi.x - 18;
+            //jediStandAnimation.y = jedi.y - 30;
             bottomCollision = true;
         }
         else {
             jedi.y += SPEED;
         }
     }
+
 }
 
 
