@@ -1,11 +1,34 @@
 function drawObjects() {
-        // Create jedi object
+    // Create jedi object
     jediGraphic = new createjs.Graphics();
     jediGraphic.beginStroke("black").beginFill("red").drawCircle(0, 0, 10);
     jedi = new createjs.Shape(jediGraphic);
     jedi.x = jediX;
     jedi.y = jediY;
     stage.addChild(jedi);
+
+    //create jedi sprites
+    jediWalkDown = new createjs.Sprite(jediSpriteSheet, "walkDown");
+    jediWalkUp = new createjs.Sprite(jediSpriteSheet, "walkUp");
+    jediWalkRight = new createjs.Sprite(jediSpriteSheet, "walkRight");
+    jediWalkLeft = new createjs.Sprite(jediSpriteSheet, "walkLeft");
+
+    jediStandDown = new createjs.Sprite(jediSpriteSheet, "standDown");
+    jediStandUp = new createjs.Sprite(jediSpriteSheet, "standUp");
+    jediStandRight = new createjs.Sprite(jediSpriteSheet, "standRight");
+    jediStandLeft = new createjs.Sprite(jediSpriteSheet, "standLeft");
+
+    jediStandDown.visible = false;
+    jediStandLeft.visible = false;
+    jediStandRight.visible = false;
+    jediStandUp.visible = false;
+
+    jediWalkDown.visible = false;
+    jediWalkLeft.visible = false;
+    jediWalkRight.visible = false;
+    jediWalkUp.visible = false;
+
+    jediFacingInt = 0;
 
 
     //Create bountyHunterTrigger and bountyHunter Objects
