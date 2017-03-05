@@ -154,7 +154,18 @@ var listOfTriggers;
 listOfTriggers = [];
 
 function load() {
+			
     init();
+		createjs.Sound.alternateExtensions = ["mp3"];
+    createjs.Sound.addEventListener("fileload", handleFileLoad);
+	createjs.Sound.registerSound({id:"mySound", src:"sound/bg_music.mp3"});
+	function handleFileLoad()
+	{
+		createjs.Sound.play("mySound");
+     // store off AbstractSoundInstance for controlling
+     var myInstance = createjs.Sound.play("mySound", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+	 myInstance.volume = 0.5;
+	}
 }
 
 function init() {
