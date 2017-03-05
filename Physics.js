@@ -267,6 +267,12 @@ function storyTrigger() {
             policeStory();
             stage.update();
         }
+		
+		else if(triggeredObject === deadManTrigger)
+		{
+			deadManStory();
+			stage.update();
+		}
     }
     else{
         stage.removeChild(displayText);

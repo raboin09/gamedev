@@ -52,6 +52,7 @@ var displayTextBool = false;
 
 var dialogBox;
 
+var jediTalkingHead;
 var ambassadorTalkingHead;
 var sithTalkingHead;
 var policeTalkingHead;
@@ -115,6 +116,9 @@ var ambassador;
 var ambassadorTrigger;
 var ambassadorSprite;
 var ambassadorStoryCount = 0;
+
+var deadMan;
+var deadManTrigger;
 
 var bartender;
 var bartenderTrigger;

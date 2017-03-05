@@ -316,6 +316,29 @@ function drawObjects() {
     policeTalkingHead.y = 655;
     policeTalkingHead.visible = false;
     stage.addChild(policeTalkingHead);
+	
+	jediTalkingHead = new createjs.Bitmap('img/jediHead.png');
+    jediTalkingHead.x = 5;
+    jediTalkingHead.y = 655;
+    jediTalkingHead.visible = false;
+    stage.addChild(jediTalkingHead);
+	
+	var deadManGraphic = new createjs.Graphics();
+    deadManGraphic.beginStroke("black").beginFill("lightblue").drawCircle(0, 0, 10);
+    deadMan = new createjs.Shape(deadManGraphic);
+    deadMan.x = 710;
+    deadMan.y = 465;
+    deadMan.visible = false;
+    listOfObjects.push(deadMan);
+    stage.addChild(deadMan);
+	var deadManTriggerGraphic = new createjs.Graphics();
+    deadManTriggerGraphic.beginStroke("black").beginFill("yellow").drawCircle(0, 0, 20);
+    deadManTrigger = new createjs.Shape(deadManTriggerGraphic);
+    deadManTrigger.x = 710;
+    deadManTrigger.y = 465;
+    listOfTriggers.push(deadManTrigger);
+    deadManTrigger.visible = false;
+    stage.addChild(deadManTrigger);
 
     var botHorizontalWall, botHorizontalWallGraphics;
     var botVerticalWall, botVerticalWallGraphics;
