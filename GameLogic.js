@@ -117,6 +117,7 @@ var ambassadorTrigger;
 var ambassadorSprite;
 var ambassadorStoryCount = 0;
 
+var murderWeapon;
 var deadMan;
 var deadManTrigger;
 

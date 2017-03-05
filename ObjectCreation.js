@@ -310,6 +310,16 @@ function drawObjects() {
     policeSprite.y = police.y - 30;
     policeSprite.visible = true;
     stage.addChild(policeSprite);
+	
+	murderWeapon = new createjs.Bitmap('img/murderWeapon.png');
+    murderWeapon.x = 415;
+    murderWeapon.y = 410;
+	murderWeapon.skewX = -20;
+	//murderWeapon.skewY = 10;
+	murderWeapon.scaleX=0.15;
+	murderWeapon.scaleY=0.15;
+    murderWeapon.visible = false;
+    stage.addChild(murderWeapon);
 
     policeTalkingHead = new createjs.Bitmap('img/policeHead.png');
     policeTalkingHead.x = 5;
