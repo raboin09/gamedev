@@ -1,6 +1,6 @@
 function deadManStory() {
 
-    if(storyArcCount === 0){
+    if(storyArcCount === 0 || storyArcCount === 1){
         if(jediDisplayTextBool === false && displayTextBool === false) {
             jediTalkingHead.visible = true;
             jediDisplayText = new createjs.Text("JEDI: Oh my goodness! A dead body!", "20px Helvetica", "#FFF");
