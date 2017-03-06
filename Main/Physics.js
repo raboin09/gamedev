@@ -231,14 +231,18 @@ function checkBorder() {
 }
 
 function storyArcCheck() {
-    if(bartenderStoryCount === 1 && sithStoryCount === 1 && ambassadorStoryCount === 1 && bountyHunterStoryCount=== 1 && policeStoryCount ===1 && storyArcCount === 0){
+    if(bartenderStoryCount === 1 && sithStoryCount === 1 && ambassadorStoryCount === 1 && bountyHunterStoryCount=== 1 && policeStoryCount ===1 && storyArcCount === 0 && deadmanStory == 1){
+        exclamationText.visible = true;
         storyArcCount = 1;
     }
-    if(bartenderStoryCount === 2 && sithStoryCount === 2 && ambassadorStoryCount === 2 && bountyHunterStoryCount=== 2 && policeStoryCount ===2 && storyArcCount === 1) {
+    if(bartenderStoryCount === 2 && sithStoryCount === 2 && ambassadorStoryCount === 2 && bountyHunterStoryCount=== 2 && policeStoryCount ===2 && storyArcCount === 1 && weaponPickedUp == true) {
+        exclamationText.visible = true;
         storyArcCount = 2;
     }
-    if(bartenderStoryCount === 3 && sithStoryCount === 3 && ambassadorStoryCount === 3 && bountyHunterStoryCount=== 3 && policeStoryCount === 3 && storyArcCount === 2)
+    if(bartenderStoryCount === 3 && sithStoryCount === 3 && ambassadorStoryCount === 3 && bountyHunterStoryCount=== 3 && policeStoryCount === 3 && storyArcCount === 2) {
+        exclamationText.visible = true;
         storyArcCount = 3;
+    }
 }
 
 function storyTrigger() {
@@ -289,6 +293,29 @@ function bigToLeftTrigger(){
     rightRoom.alpha = .9;
     leftRoom.alpha = 0;
     bigRoom.alpha = .9;
+    if(storyArcCount === 1 && weaponPickedUp == false && policeStoryCount == 2){
+        if(jediDisplayTextBool === false && displayTextBool === false) {
+            jediTalkingHead.visible = true;
+            murderWeapon.visible = true;
+            jediDisplayText = new createjs.Text("*You found the murder weapon on the floor. Clumsy murderer...*", "20px Helvetica", "#FFF");
+            jediDisplayText.x = 55;
+            jediDisplayText.y = 670;
+            stage.addChild(jediDisplayText);
+            jediDisplayTextBool = true;
+            displayTextBool = true;
+            stage.update();
+            setTimeout(function() {
+                deadmanStory++;
+                murderWeapon.visible = false;
+                weaponPickedUp = true;
+                stage.removeChild(jediDisplayText);
+                jediDisplayTextBool = false;
+                jediTalkingHead.visible = false;
+                displayTextBool = false;
+                stage.update();
+            }, 4000)
+        }
+    }
     jedi.y += 80;
 }
 
@@ -301,6 +328,7 @@ function leftToBigTrigger() {
     rightRoom.alpha = .9;
     leftRoom.alpha = .9;
     bigRoom.alpha = 0;
+    murderWeapon.visible = false;
     jedi.y -= 80;
 }
 

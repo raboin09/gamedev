@@ -105,6 +105,8 @@ var jediStandLeft;
 var jediWalkRight;
 var jediStandRight;
 
+
+
 var bountyHunterContainer;
 var bountyHunter;
 var bountyHunterTrigger;
@@ -135,6 +137,8 @@ var bigRoom;
 var leftRoom;
 var rightRoom;
 
+var exclamationText;
+
 var sith;
 var sithTrigger;
 var sithSprite;
@@ -145,7 +149,14 @@ var policeTrigger;
 var sithSprite;
 var policeStoryCount = 0;
 
-var storyArcCount = 0;
+var primeSuspect = jedi;
+var deadmanStory = 0;
+var weaponPickedUp = false;
+var storyAccusationPart = false;
+var storyArcCount = -1;
+var alibiCheck = false;
+
+var video;
 
 var listOfObjects;
 listOfObjects = [];
@@ -156,7 +167,7 @@ listOfTriggers = [];
 function load() {
 			
     init();
-		createjs.Sound.alternateExtensions = ["mp3"];
+	createjs.Sound.alternateExtensions = ["mp3"];
     createjs.Sound.addEventListener("fileload", handleFileLoad);
 	createjs.Sound.registerSound({id:"mySound", src:"sound/bg_music.mp3"});
 	function handleFileLoad()
@@ -166,6 +177,8 @@ function load() {
      var myInstance = createjs.Sound.play("mySound", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
 	 myInstance.volume = 0.5;
 	}
+
+
 }
 
 function init() {
@@ -173,7 +186,7 @@ function init() {
 
     canvasHeight = 650;
     canvasWidth = 950;
-
+    stage.addChild(exclamationText);
     backgroundImage.src = 'img/base.jpg';
     backgroundImage.onload = function () {
         backgroundBitmap = new createjs.Bitmap(backgroundImage);
@@ -183,6 +196,9 @@ function init() {
         createjs.Ticker.setFPS(60);
         window.onkeyup = keyUpHandler;
         window.onkeydown = keyDownHandler;
+        exclamationText = new createjs.Text("!", "42px Helvetica", "#FF0000");
+        exclamationText.visible = true;
+        stage.addChild(exclamationText);
         drawObjects();
     }
 
@@ -203,6 +219,61 @@ function keyDownHandler(e) {
         case ARROW_KEY_DOWN:
             downKeyDown = true;
             break;
+    }
+}
+
+function winCheck() {
+    if(primeSuspect != jedi){
+        if(primeSuspect == sith){
+            policeTalkingHead.visible = true;
+            policeDisplayText = new createjs.Text("POLICE: You're right! It is the Politician!", "20px Helvetica", "#FFF");
+            policeDisplayText.x = 55;
+            policeDisplayText.y = 670;
+            stage.addChild(policeDisplayText);
+            policeDisplayTextBool = true;
+            displayTextBool = true;
+            stage.update();
+            setTimeout(function() {
+                storyArcCount = 5;
+                policeTalkingHead.visible = false;
+                stage.removeChild(policeDisplayText);
+                policeDisplayTextBool = false;
+                policeDisplayText = new createjs.Text("YOU WIN!", "54px Helvetica", "#00FF00");
+                policeDisplayText.x = 350;
+                policeDisplayText.y = canvasHeight/2 - 100;
+                stage.addChild(policeDisplayText);
+                policeDisplayTextBool = true;
+                displayTextBool = true;
+                stage.update();
+                displayTextBool = false;
+                stage.update();
+            }, 3000)
+        }
+        else {
+            policeTalkingHead.visible = true;
+            policeDisplayText = new createjs.Text("POLICE: You missed the mark on this one, Jedi.", "20px Helvetica", "#FFF");
+            policeDisplayText.x = 55;
+            policeDisplayText.y = 670;
+            stage.addChild(policeDisplayText);
+            policeDisplayTextBool = true;
+            displayTextBool = true;
+            stage.update();
+            setTimeout(function() {
+                storyArcCount = 5;
+                policeTalkingHead.visible = false;
+                stage.removeChild(policeDisplayText);
+                policeDisplayTextBool = false;
+                policeDisplayText = new createjs.Text("YOU LOSE!", "54px Helvetica", "#FF0000");
+                policeDisplayText.x = 350;
+                policeDisplayText.y = canvasHeight/2 - 100;
+                stage.addChild(policeDisplayText);
+                policeDisplayTextBool = true;
+                displayTextBool = true;
+                stage.update();
+                displayTextBool = false;
+                stage.update();
+            }, 3000)
+        }
     }
 }
 

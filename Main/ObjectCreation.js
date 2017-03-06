@@ -308,6 +308,9 @@ function drawObjects() {
     policeSprite = new createjs.Bitmap('img/police.png');
     policeSprite.x = police.x - 20;
     policeSprite.y = police.y - 30;
+    exclamationText.x = policeSprite.x + 10;
+    exclamationText.y = policeSprite.y - 50;
+    exclamationText.visible = true;
     policeSprite.visible = true;
     stage.addChild(policeSprite);
 	
