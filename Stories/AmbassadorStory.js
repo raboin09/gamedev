@@ -3,7 +3,7 @@ function ambassadorStory() {
     if(ambassadorStoryCount === 0 && storyArcCount === 0){
         if(ambassadorDisplayTextBool === false && displayTextBool === false) {
             ambassadorTalkingHead.visible = true;
-            ambassadorDisplayText = new createjs.Text("AMBASSADOR: Hi I'm the ambassador", "20px Helvetica", "#FFF");
+            ambassadorDisplayText = new createjs.Text("AMBASSADOR: Good day, I'm the Ambassador. I did not witness the murder.", "20px Helvetica", "#FFF");
             ambassadorDisplayText.x = 70;
             ambassadorDisplayText.y = 670;
             stage.addChild(ambassadorDisplayText);
@@ -23,7 +23,7 @@ function ambassadorStory() {
     else if(ambassadorStoryCount === 1 && storyArcCount === 0){
         if(ambassadorDisplayTextBool === false && displayTextBool === false) {
             ambassadorTalkingHead.visible = true;
-            ambassadorDisplayText = new createjs.Text("AMBASSADOR: insert part 1 redirect", "20px Helvetica", "#FFF");
+            ambassadorDisplayText = new createjs.Text("AMBASSADOR: Leave me to my thoughts.", "20px Helvetica", "#FFF");
             ambassadorDisplayText.x = 70;
             ambassadorDisplayText.y = 670;
             stage.addChild(ambassadorDisplayText);
@@ -42,9 +42,9 @@ function ambassadorStory() {
 
 
     if(ambassadorStoryCount === 1 && storyArcCount === 1){
-        if(ambassadorDisplayTextBool === false && displayTextBool === false) {
+        if(ambassadorDisplayTextBool === false && displayTextBool === false && alibiCheck == true) {
             ambassadorTalkingHead.visible = true;
-            ambassadorDisplayText = new createjs.Text("AMBASSADOR: insert part 2 story", "20px Helvetica", "#FFF");
+            ambassadorDisplayText = new createjs.Text("AMBASSADOR: I saw the Politician here that night.", "20px Helvetica", "#FFF");
             ambassadorDisplayText.x = 70;
             ambassadorDisplayText.y = 670;
             stage.addChild(ambassadorDisplayText);
@@ -64,7 +64,7 @@ function ambassadorStory() {
     else if(ambassadorStoryCount === 2 && storyArcCount === 1){
         if(ambassadorDisplayTextBool === false && displayTextBool === false) {
             ambassadorTalkingHead.visible = true;
-            ambassadorDisplayText = new createjs.Text("AMBASSADOR: insert part 2 redirect", "20px Helvetica", "#FFF");
+            ambassadorDisplayText = new createjs.Text("AMBASSADOR: Go speak to the others.", "20px Helvetica", "#FFF");
             ambassadorDisplayText.x = 70;
             ambassadorDisplayText.y = 670;
             stage.addChild(ambassadorDisplayText);
@@ -82,12 +82,14 @@ function ambassadorStory() {
     }
 
     if(ambassadorStoryCount === 2 && storyArcCount === 2){
-        if(ambassadorDisplayTextBool === false && displayTextBool === false) {
+        if(ambassadorDisplayTextBool === false && displayTextBool === false && storyAccusationPart == true) {
             ambassadorTalkingHead.visible = true;
-            ambassadorDisplayText = new createjs.Text("AMBASSADOR: insert part 3 story", "20px Helvetica", "#FFF");
+            ambassadorDisplayText = new createjs.Text("AMBASSADOR: Me? I'm your primary suspect?!", "20px Helvetica", "#FFF");
+            primeSuspect = ambassador;
             ambassadorDisplayText.x = 70;
             ambassadorDisplayText.y = 670;
             stage.addChild(ambassadorDisplayText);
+            storyAccusationPart = false;
             ambassadorDisplayTextBool = true;
             displayTextBool = true;
             stage.update();
@@ -97,6 +99,7 @@ function ambassadorStory() {
                 ambassadorDisplayTextBool = false;
                 ambassadorTalkingHead.visible = false;
                 displayTextBool = false;
+                winCheck();
                 stage.update();
             }, 3000)
         }

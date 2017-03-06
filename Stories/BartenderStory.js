@@ -3,7 +3,7 @@ function bartenderStory() {
     if(bartenderStoryCount === 0 && storyArcCount === 0){
         if(bartenderDisplayTextBool === false && displayTextBool === false) {
             bartenderTalkingHead.visible = true;
-            bartenderDisplayText = new createjs.Text("BARTENDER: Hi I'm the bartender", "20px Helvetica", "#FFF");
+            bartenderDisplayText = new createjs.Text("BARTENDER: Hello, I was the bartender here the night of the murderer. I assure you, I didn't kill him.", "20px Helvetica", "#FFF");
             bartenderDisplayText.x = 55;
             bartenderDisplayText.y = 670;
             stage.addChild(bartenderDisplayText);
@@ -17,7 +17,7 @@ function bartenderStory() {
                 bartenderTalkingHead.visible = false;
                 displayTextBool = false;
                 stage.update();
-            }, 2000)
+            }, 4000)
         }
     }
     else if(bartenderStoryCount === 1 && storyArcCount === 0){
@@ -42,9 +42,9 @@ function bartenderStory() {
 
 
     if(bartenderStoryCount === 1 && storyArcCount === 1){
-        if(bartenderDisplayTextBool === false && displayTextBool === false) {
+        if(bartenderDisplayTextBool === false && displayTextBool === false && alibiCheck == true) {
             bartenderTalkingHead.visible = true;
-            bartenderDisplayText = new createjs.Text("BARTENDER: insert story part 2", "20px Helvetica", "#FFF");
+            bartenderDisplayText = new createjs.Text("BARTENDER: The politician said he was at home? No no no, he was here skulking\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t around before the murder.", "20px Helvetica", "#FFF");
             bartenderDisplayText.x = 55;
             bartenderDisplayText.y = 670;
             stage.addChild(bartenderDisplayText);
@@ -58,15 +58,16 @@ function bartenderStory() {
                 bartenderTalkingHead.visible = false;
                 displayTextBool = false;
                 stage.update();
-            }, 3000)
+            }, 5000)
         }
     }
     else if(bartenderStoryCount === 2 && storyArcCount === 1){
         if(bartenderDisplayTextBool === false && displayTextBool === false) {
             bartenderTalkingHead.visible = true;
-            bartenderDisplayText = new createjs.Text("BARTENDER: insert part 2 redirect", "20px Helvetica", "#FFF");
+            bartenderDisplayText = new createjs.Text("BARTENDER: That's all I have to say.", "20px Helvetica", "#FFF");
             bartenderDisplayText.x = 55;
             bartenderDisplayText.y = 670;
+            storyAccusationPart = false;
             stage.addChild(bartenderDisplayText);
             bartenderDisplayTextBool = true;
             displayTextBool = true;
@@ -82,9 +83,10 @@ function bartenderStory() {
     }
 
     if(bartenderStoryCount === 2 && storyArcCount === 2){
-        if(bartenderDisplayTextBool === false && displayTextBool === false) {
+        if(bartenderDisplayTextBool === false && displayTextBool === false && storyAccusationPart == true) {
             bartenderTalkingHead.visible = true;
-            bartenderDisplayText = new createjs.Text("BARTENDER: insert story part 3.", "20px Helvetica", "#FFF");
+            primeSuspect = bartender;
+            bartenderDisplayText = new createjs.Text("BARTENDER: Yeah...sure I'M the murderer. Not the blatant sith over there...", "20px Helvetica", "#FFF");
             bartenderDisplayText.x = 55;
             bartenderDisplayText.y = 670;
             stage.addChild(bartenderDisplayText);
@@ -97,8 +99,9 @@ function bartenderStory() {
                 bartenderDisplayTextBool = false;
                 bartenderTalkingHead.visible = false;
                 displayTextBool = false;
+                winCheck();
                 stage.update();
-            }, 3000)
+            }, 4000)
         }
     }
 
@@ -119,6 +122,7 @@ function bartenderStory() {
                 bartenderTalkingHead.visible = false;
                 displayTextBool = false;
                 stage.update();
+                winCheck();
             }, 3000)
         }
     }
