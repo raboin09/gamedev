@@ -289,7 +289,7 @@ function bigToLeftTrigger(){
     bountyHunterSprite.visible = false;
     policeSprite.visible = false;
     bartenderSprite.visible = false;
-	murderWeapon.visible = (storyArcCount === 2) ? true : false;
+	//murderWeapon.visible = (storyArcCount === 2) ? true : false;
     rightRoom.alpha = .9;
     leftRoom.alpha = 0;
     bigRoom.alpha = .9;
